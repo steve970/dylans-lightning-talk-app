@@ -32,7 +32,7 @@ email:
 If you want your authors file to live somwhere else, just tell Git Duet about it via the GIT_DUET_AUTHORS_FILE environmental variable, e.g.:
 
 export GIT_DUET_AUTHORS_FILE=$HOME/.secret-squirrel/git-authors
-# ...
+ ...
 git duet jd am
 Workflow stuff
 
@@ -42,7 +42,7 @@ git duet jd fb
 When you're ready to commit, use git duet-commit (or add an alias like a normal person. Something like dci = duet-commit should work.)
 
 git duet-commit -v [any other git options]
-# or...
+ or...
 git dci -v [any other git options]
 When you're done pairing, set the author back to yourself with git solo:
 
@@ -68,28 +68,28 @@ git duet jd fb
 Then the configured email addresses will show up like this:
 
 git config user.email
-# -> jane@eternalstench.bog.local
+ -> jane@eternalstench.bog.local
 git config duet.env.git-author-email
-# -> jane@eternalstench.bog.local
+ -> jane@eternalstench.bog.local
 git config duet.env.git-committer-email
-# -> f.bar@eternalstench.bog.local
+ -> f.bar@eternalstench.bog.local
 A custom email template may be provided via the email_template config variable. The template should be a valid ERB string and the variables available are author which is the full first and last name value associated with each set of initials, initials which are the initials key, and username which is the part following ; in the author value.
 
 pairs:
   jd: Jane Doe
   fb: Frances Bar
-email_template: '<%= "#{author.gsub(/ /, "-").downcase}@hamster.local" =%>'
+email_template: '<%= "{author.gsub(/ /, "-").downcase}@hamster.local" =%>'
 After invoking:
 
 git duet jd fb
 Then the configured email addresses will show up like this:
 
 git config user.email
-# -> jane-doe@hamster.local
+ -> jane-doe@hamster.local
 git config duet.env.git-author-email
-# -> jane-doe@hamster.local
+ -> jane-doe@hamster.local
 git config duet.env.git-committer-email
-# -> frances-bar@hamster.local
+ -> frances-bar@hamster.local
 If there are any exceptions to either the default format or a provided email_template config var, explicitly setting email addresses by initials is supported.
 
 pairs:
@@ -102,19 +102,19 @@ email_addresses:
 Then Jane Doe's email will show up like this:
 
 git solo jd
-# ...
+ ...
 git config user.email
-# -> jane@awesome.local
+ -> jane@awesome.local
 Alternatively, if you have some other preferred way to look up email addresses by initials, name or username, just use that instead:
 
 export GIT_DUET_EMAIL_LOOKUP_COMMAND="$HOME/bin/custom-ldap-thingy"
-# ... do work
+ ... do work
 git duet jd fb
-# ... observe emails being set via the specified executable
+ ... observe emails being set via the specified executable
 The initials, name, and username will be passed as arguments to the lookup executable. Anything written to standard output will be used as the email address:
 
 $HOME/bin/custom-ldap-thingy 'jd' 'Jane Doe' 'jane'
-# -> doej@behemoth.company.local
+ -> doej@behemoth.company.local
 If nothing is returned on standard output, email construction falls back to the decisions described above.
 
 Order of Precedence
@@ -132,14 +132,14 @@ If you'd like to regularly remind yourself to set the solo or duet initials, use
 
 (in $REPO_ROOT/.git/hooks/pre-commit)
 
-#!/bin/bash
+!/bin/bash
 exec git duet-pre-commit
 The duet-pre-commit command will exit with a non-zero status if the cached author and committer settings are missing or stale. The default staleness cutoff is 20 minutes, but may be configured via the GIT_DUET_SECONDS_AGO_STALE environmental variable, which should be an integer of seconds, e.g.:
 
 export GIT_DUET_SECONDS_AGO_STALE=60
-# ... do work for more than a minute
+ ... do work for more than a minute
 git commit -v
-# ... pre-commit hook fires
+ ... pre-commit hook fires
 If you want to use the default hook (as shown above), install it while in your repo like so:
 
 git duet-install-hook
@@ -151,7 +151,7 @@ In order to have the author and committer properly set when committing via RubyM
 
 \curl -Ls -o ~/bin/rubymine-git-wrapper https://raw.github.com/meatballhat/git-duet/master/bin/rubymine-git-wrapper
 chmod +x ~/bin/rubymine-git-wrapper
-Given an install location of ~/bin/rubymine-git-wrapper as shown above, you would then update your RubyMine setting in Preferences => Version Control => Git to set Path to Git executable to the full path of ~/bin/rubymine-git-wrapper (with the ~ expanded). See issue #8 for more details.
+Given an install location of ~/bin/rubymine-git-wrapper as shown above, you would then update your RubyMine setting in Preferences => Version Control => Git to set Path to Git executable to the full path of ~/bin/rubymine-git-wrapper (with the ~ expanded). See issue 8 for more details.
 
 Compatibility
 
