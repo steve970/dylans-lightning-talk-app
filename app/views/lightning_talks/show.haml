@@ -1,0 +1,10 @@
+%h1= @lightning_talk.user.titleize
+%p
+  User
+  = @lightning_talk.user
+%p Description
+  = @lightning_talk.description
+%p
+  Date
+  = @ligtning_talk.date
+= link_to 'Back', lightning_talks_path
