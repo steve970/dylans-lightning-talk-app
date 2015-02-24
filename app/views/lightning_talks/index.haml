@@ -1,17 +1,23 @@
-%h1 Lightning Talks
-= link_to 'New Lightning Talk', new_lightning_talk_path
-%hr
+.page-header
+  .pull-right
+    = link_to 'New Lightning Talk', new_lightning_talk_path, class:"btn btn-info"
+  %h1 Upcoming Talks
+
 - @lightning_talks.each do |talk|
-  %p
-    User
-    = link_to talk.user, lightning_talk_path(talk)
-  %p
-    %strong Description
-    = talk.description
-  %p
-    %strong Date
-    = talk.date
-  %p
-    = link_to 'Edit', edit_lightning_talk_path(talk)
-    = link_to 'Delete', lightning_talk_path(talk), method: :delete, data:{confirm: 'Giving up?'}
+  %table.table
+    %thead
+      %tr
+        %th User
+        %th Description
+        %th{colspan: 4} Date
+
+
+    %tbody
+      %tr
+        %td= link_to talk.user, lightning_talk_path(talk)
+        %td= talk.description
+        %td= talk.date
+        %td.text-right
+          = link_to 'Edit', edit_lightning_talk_path(talk), class:"btn btn-primary"
+          = link_to 'Delete', lightning_talk_path(talk), method: :delete, data:{confirm: 'Giving up?'}, class:"btn btn-danger"
   %hr

@@ -10,13 +10,16 @@
     %header
       %nav.navbar.navbar-fixed-top.navbar-inverse
         .container
+          = link_to "g7 Lightning Talks", '#', id: "logo"
           -if current_user
             .pull-right
-              = link_to "Logout", signout_path, class: 'btn btn-info'
+              = link_to "Logout", signout_path, class: 'navbar-btn btn btn-danger'
           -else
             .pull-right
-              = link_to "Login", signin_path
-              = link_to "Register", new_registration_path
+              = link_to "Login", signin_path, class: 'navbar-btn btn btn-danger'
+              = link_to "Register", new_registration_path, class: 'navbar-btn btn btn-danger'
           - if flash[:notice]
             = flash[:notice]
-    = yield
+
+    .container
+      = yield
