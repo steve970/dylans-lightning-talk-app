@@ -7,13 +7,16 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    - if flash[:notice]
-      = flash[:notice]
-  %header
-    -if current_user
-      = link_to "Logout", signout_path
-    -else
-      = link_to "Login", signin_path
-      = link_to "Register", new_registration_path
-
+    %header
+      %nav.navbar.navbar-fixed-top.navbar-inverse
+        .container
+          -if current_user
+            .pull-right
+              = link_to "Logout", signout_path, class: 'btn btn-info'
+          -else
+            .pull-right
+              = link_to "Login", signin_path
+              = link_to "Register", new_registration_path
+          - if flash[:notice]
+            = flash[:notice]
     = yield
