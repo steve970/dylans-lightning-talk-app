@@ -1,15 +1,19 @@
-- if @lightning_talk.errors.any?
-  - @lightning_talk.errors.full_messages.each do |message|
-    %p= message
-= form_for @lightning_talk do |f|
-  = f.label :user
-  = f.text_field :user
-  .div
-    = f.label :description
-    = f.text_field :description
-  .div
-    = f.label :date
-    = f.date_field :date
-  .div
-    = f.submit
-    = link_to 'Back', lightning_talks_path
+= render partial: "shared/errors", locals: {object: @lightning_talk}
+
+= form_for @lightning_talk, html: {class: "form-horizontal"} do |f|
+  .form-group
+    = f.label :user, class: 'control-label col-md-2'
+    .col-md-4
+      = f.text_field :user, class: 'form-control'
+  .form-group
+    = f.label :description, class: 'control-label col-md-2'
+    .col-md-4
+      = f.text_field :description, class: 'form-control'
+  .form-group
+    = f.label :date, class: 'control-label col-md-2'
+    .col-md-4
+      = f.date_field :date, class: 'form-control'
+  .form-group
+    .col-md-6.col-md-offset-2
+      = f.submit class:'btn btn-primary'
+      = link_to 'Back', lightning_talks_path, class: 'btn btn-default'
