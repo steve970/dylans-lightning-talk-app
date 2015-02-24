@@ -173,7 +173,10 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+<<<<<<< HEAD
   bootstrap-sass (~> 3.3.3)
+=======
+>>>>>>> bee56e463b723c840aa3c12da3dacc3cc8a7d473
   byebug
   coffee-rails (~> 4.1.0)
   haml

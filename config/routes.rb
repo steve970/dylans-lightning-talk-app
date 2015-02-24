@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
    root 'lightning_talks#index'
    resources :lightning_talks
 
+<<<<<<< HEAD
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -55,4 +53,10 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+=======
+   get '/sign-in' => 'authentication#new', as: :signin
+  post '/sign-in' => 'authentication#create'
+  get '/sign-out' => 'authentication#destroy', as: :signout
+  
+>>>>>>> bee56e463b723c840aa3c12da3dacc3cc8a7d473
 end
