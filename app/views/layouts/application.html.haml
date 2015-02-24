@@ -11,9 +11,9 @@
       = flash[:notice]
   %header
     -if current_user
-      = link_to "Logout", sign_out_path
+      = link_to "Logout", signout_path
     -else
-      -#= link_to "Login", signin_path
+      = link_to "Login", signin_path
       = link_to "Register", new_registration_path
 
     = yield

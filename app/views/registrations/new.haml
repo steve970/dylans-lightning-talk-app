@@ -1,9 +1,6 @@
-= form_tag @user, url: registrations_path
+= form_for @user, url: registrations_path, html: { class: "registration-form" } do |f|
   .div
-    = f.label :name
-    = f.text_field :name, autofocus: true
-  .div
-    = f.label :email
+    = f.label :email, autofocus: true
     = f.email_field :email
   .div
     = f.label :password
@@ -12,4 +9,4 @@
     = f.label :password_confirmation, "Confirm"
     = f.password_field :password_confirmation
   .div
-    = f.submit "Submit"
+    = f.submit
