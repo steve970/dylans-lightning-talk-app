@@ -6,6 +6,7 @@ Rails.application.routes.draw do
    root 'lightning_talks#index'
    resources :lightning_talks
 
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  resources :registrations, only: [:new, :create]
   # Example resource route with options:
   #   resources :products do
   #     member do
