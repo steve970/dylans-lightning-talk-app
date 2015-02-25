@@ -8,11 +8,12 @@
       %tr
         %th User
         %th Description
-        %th{colspan: 4} Date
+        %th Time
+        %th{colspan: 3} Date
     %tbody
       - @lightning_talks.each do |talk|
         %tr
           %td= link_to talk.user, lightning_talk_path(talk)
           %td= talk.description
-          %td= talk.date
-          %td.text-right
+          %td= talk.talk_time.strftime('%l:%M %p')
+          %td= talk.date.strftime("%A %m/%d")

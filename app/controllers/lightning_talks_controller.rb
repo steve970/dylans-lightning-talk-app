@@ -14,7 +14,8 @@ class LightningTalksController < ApplicationController
 
   def create
     @lightning_talk = LightningTalk.new(lightning_talk_params)
-    @lightning_talk.user = current_user.email
+    @lightning_talk.user = current_user.name
+    @lightning_talk.user_id = current_user.id
     if @lightning_talk.save
       flash[:notice] = 'You have signed up for a new lightning talk'
       redirect_to lightning_talks_path
@@ -38,7 +39,7 @@ class LightningTalksController < ApplicationController
   private
 
   def lightning_talk_params
-    params.require(:lightning_talk).permit(:user, :description, :date)
+    params.require(:lightning_talk).permit(:user, :description, :date, :talk_time)
   end
 
   def set_lightning_talk

@@ -31,8 +31,7 @@ class Admin::LightningTalksController < ApplicationController
   end
 
   def destroy
-    lightning_talk = LightningTalk.find(params[:id])
-    lightning_talk.destroy
+    LightningTalk.find(params[:id]).destroy
     flash[:notice] = 'You are too scared to give a lightning talk?'
     redirect_to admin_lightning_talks_path
   end

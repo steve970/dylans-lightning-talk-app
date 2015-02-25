@@ -12,8 +12,8 @@ class AuthenticationController < ApplicationController
     user = User.find_or_create_by(email: email, name: name)
     if user.present?
       session[:user_id] = user.id
-      flash[:notice] = "Thanks for logging in #{user.email}"
-      redirect_to root_path
+      flash[:notice] = "Thanks for logging in #{user.name}"
+      redirect_to lightning_talks_path
     else
       flash[:notice] = "Something went wrong"
       redirect_to root_path

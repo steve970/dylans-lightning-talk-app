@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'lightning_talks#index'
+  root 'welcome#index'
   resources :lightning_talks, except:[:destroy]
   resources :registrations, only: [:new, :create]
   get '/auth/github/callback', to: 'authentication#create'

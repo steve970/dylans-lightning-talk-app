@@ -15,11 +15,12 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
- body {
-   padding-top: 75px;
- }
+body {
+  padding-top: 75px;
+  padding-bottom: 20px;
+}
 
- #logo {
+#logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
