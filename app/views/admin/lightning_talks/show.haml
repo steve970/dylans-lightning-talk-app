@@ -1,0 +1,6 @@
+.page-header
+  .pull-right
+    = link_to "Edit", edit_admin_lightning_talk_path(@lightning_talk), class:"btn btn-primary"
+  %h1= @lightning_talk.description
+%h3= @lightning_talk.user
+%p= @lightning_talk.date.strftime("%m/%d/%Y")
