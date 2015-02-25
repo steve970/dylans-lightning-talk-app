@@ -8,10 +8,6 @@ class Admin::LightningTalksController < ApplicationController
   def show
   end
 
-  def new
-    @lightning_talk = LightningTalk.new
-  end
-
   def create
     @lightning_talk = LightningTalk.new(lightning_talk_params)
     if @lightning_talk.save
