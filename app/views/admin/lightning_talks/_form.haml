@@ -1,6 +1,6 @@
 = render partial: "shared/errors", locals: {object: @lightning_talk}
 
-= form_for @lightning_talk, html: {class: "form-horizontal"} do |f|
+= form_for @lightning_talk, url: admin_lightning_talk_path(@lightning_talk), html: {class: "form-horizontal"} do |f|
   .form-group
     = f.label :user, class: 'control-label col-md-2'
     .col-md-4
