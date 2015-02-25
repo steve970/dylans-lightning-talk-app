@@ -7,8 +7,9 @@ class AuthenticationController < ApplicationController
 
   def create
     email = request.env['omniauth.auth']['info']['email']
+    name = request.env['omniauth.auth']['info']['name']
     auth_token = request.env['omniauth.auth']['credentials']['token']
-    user = User.find_or_create_by(email: email)
+    user = User.find_or_create_by(email: email, name: name)
     if user.present?
       session[:user_id] = user.id
       flash[:notice] = "Thanks for logging in #{user.email}"

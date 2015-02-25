@@ -14,6 +14,7 @@ class LightningTalksController < ApplicationController
 
   def create
     @lightning_talk = LightningTalk.new(lightning_talk_params)
+    @lightning_talk.user = current_user.email
     if @lightning_talk.save
       flash[:notice] = 'You have signed up for a new lightning talk'
       redirect_to lightning_talks_path
