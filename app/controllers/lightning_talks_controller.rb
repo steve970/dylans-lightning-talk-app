@@ -6,6 +6,7 @@ class LightningTalksController < ApplicationController
   end
 
   def show
+    @user = User.find(@lightning_talk.user_id)
   end
 
   def new
@@ -14,11 +15,10 @@ class LightningTalksController < ApplicationController
 
   def create
     @lightning_talk = LightningTalk.new(lightning_talk_params)
-    @lightning_talk.user = current_user.name
     @lightning_talk.user_id = current_user.id
     if @lightning_talk.save
       flash[:notice] = 'You have signed up for a new lightning talk'
-      redirect_to lightning_talks_path
+      redirect_to lightning_talk_path(@lightning_talk)
     else
       render :new
     end
@@ -30,7 +30,7 @@ class LightningTalksController < ApplicationController
   def update
     if @lightning_talk.update(lightning_talk_params)
       flash[:notice] = 'You have updated your lightning talk'
-      redirect_to lightning_talks_path
+      redirect_to lightning_talk_path(@lightning_talk)
     else
       render :edit
     end

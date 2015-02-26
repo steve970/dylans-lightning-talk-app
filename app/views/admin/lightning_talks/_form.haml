@@ -2,10 +2,6 @@
 
 = form_for @lightning_talk, url: admin_lightning_talk_path(@lightning_talk), html: {class: "form-horizontal"} do |f|
   .form-group
-    = f.label :user, class: 'control-label col-md-2'
-    .col-md-4
-      = f.text_field :user, class: 'form-control'
-  .form-group
     = f.label :description, class: 'control-label col-md-2'
     .col-md-4
       = f.text_field :description, class: 'form-control'
@@ -13,6 +9,10 @@
     = f.label :date, class: 'control-label col-md-2'
     .col-md-4
       = f.date_field :date, class: 'form-control'
+  .form-group
+    = f.label :talk_time, class: 'control-label col-md-2'
+    .col-md-4
+      = f.collection_select :talk_time, LightningTalk::TIMES, :to_s, :to_s, {}, class: 'form-control'
   .form-group
     .col-md-6.col-md-offset-2
       = f.submit class:'btn btn-primary'

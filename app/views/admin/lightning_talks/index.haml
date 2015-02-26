@@ -5,13 +5,15 @@
     %tr
       %th User
       %th Description
-      %th{colspan: 4} Date
+      %th Time
+      %th{colspan: 2} Date
   %tbody
     - @lightning_talks.each do |talk|
       %tr
-        %td= link_to talk.user, admin_lightning_talk_path(talk)
+        %td= link_to talk.user.name, admin_lightning_talk_path(talk)
         %td= talk.description
-        %td= talk.date
+        %td= talk.talk_time.strftime('%l:%M %p')
+        %td= talk.date.strftime("%A %m/%d")
         %td.text-right
           = link_to 'Edit', edit_admin_lightning_talk_path(talk), class:"btn btn-primary"
           = link_to 'Delete', admin_lightning_talk_path(talk), method: :delete, data:{confirm: 'Giving up?'}, class:"btn btn-danger"

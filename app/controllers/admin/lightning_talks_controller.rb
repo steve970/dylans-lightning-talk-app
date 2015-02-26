@@ -1,21 +1,12 @@
 class Admin::LightningTalksController < ApplicationController
   before_action :set_lightning_talk, only:[:show, :edit, :update]
+  before_action :check_for_admin
 
   def index
     @lightning_talks = LightningTalk.all
   end
 
   def show
-  end
-
-  def create
-    @lightning_talk = LightningTalk.new(lightning_talk_params)
-    if @lightning_talk.save
-      flash[:notice] = 'You have signed up for a new lightning talk'
-      redirect_to admin_lightning_talks_path
-    else
-      render :new
-    end
   end
 
   def edit
@@ -44,6 +35,13 @@ class Admin::LightningTalksController < ApplicationController
 
   def set_lightning_talk
     @lightning_talk = LightningTalk.find(params[:id])
+  end
+
+  def check_for_admin
+    unless current_user && current_user.admin
+      flash[:notice] = "You do not have permission"
+      redirect_to root_path
+    end
   end
 
 end
