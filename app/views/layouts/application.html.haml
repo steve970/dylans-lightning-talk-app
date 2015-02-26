@@ -11,10 +11,10 @@
       %nav.navbar.navbar-fixed-top.navbar-inverse
         .container
           = link_to "g7 Lightning Talks", lightning_talks_path, id: "logo"
-          - if current_user.admin
+          - if current_user && current_user.admin
             .pull-right
               = link_to "Logout", signout_path, class: 'navbar-btn btn btn-danger'
-              = link_to "Admin", admin_path, class: 'navbar-btn btn btn-danger' 
+              = link_to "Admin", admin_path, class: 'navbar-btn btn btn-danger'
           - elsif current_user
             .pull-right
               = link_to "Logout", signout_path, class: 'navbar-btn btn btn-danger'
