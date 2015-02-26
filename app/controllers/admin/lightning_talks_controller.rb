@@ -7,7 +7,23 @@ class Admin::LightningTalksController < ApplicationController
   end
 
   def show
+    @user = User.find(@lightning_talk.user_id)
   end
+
+  def new
+    @lightning_talk = LightningTalk.new
+  end
+
+  def create
+    @lightning_talk = LightningTalk.new(lightning_talk_params)
+    if @lightning_talk
+      flash[:notice] = "You have successfully created a lightning talk"
+      redirect_to admin_lightning_talks_path
+    else
+      render :new
+    end
+  end
+
 
   def edit
   end

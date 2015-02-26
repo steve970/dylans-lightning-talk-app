@@ -1,6 +1,7 @@
 class LightningTalk < ActiveRecord::Base
   TIMES = ['4:30PM', '4:35PM','4:40PM', '4:45PM', '4:50PM']
 
+
   validates :description, presence: true
   validates :user, presence: true
   validates :date, presence: true
@@ -10,6 +11,8 @@ class LightningTalk < ActiveRecord::Base
 
   belongs_to :user
 
+  private
+  
   def must_be_tuesday_or_thursday
     if date.strftime("%A") != "Tuesday" && date.strftime("%A") != "Thursday"
       errors[:base]  << "Date must be on Tuesday or Thursday"

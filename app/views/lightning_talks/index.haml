@@ -2,18 +2,17 @@
   .pull-right
     = link_to 'New Lightning Talk', new_lightning_talk_path, class:"btn btn-info"
   %h1 Upcoming Talks
-
-  %table.table
-    %thead
+%table.table
+  %thead
+    %tr
+      %th User
+      %th Description
+      %th Time
+      %th{colspan: 3} Date
+  %tbody
+    - @lightning_talks.each do |talk|
       %tr
-        %th User
-        %th Description
-        %th Time
-        %th{colspan: 3} Date
-    %tbody
-      - @lightning_talks.each do |talk|
-        %tr
-          %td= link_to talk.user.name, lightning_talk_path(talk)
-          %td= talk.description
-          %td= talk.talk_time.strftime('%l:%M %p')
-          %td= talk.date.strftime("%A %m/%d")
+        %td= link_to talk.user.name, lightning_talk_path(talk)
+        %td= talk.description
+        %td= talk.talk_time.strftime('%l:%M %p')
+        %td= talk.date.strftime("%A %m/%d")
