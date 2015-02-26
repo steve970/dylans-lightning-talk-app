@@ -3,7 +3,8 @@ class Admin::LightningTalksController < ApplicationController
   before_action :check_for_admin
 
   def index
-    @lightning_talks = LightningTalk.all
+    lightning_talks = LightningTalk.all
+    @lightning_talks = lightning_talks.order(date: :asc, talk_time: :asc)
   end
 
   def show
